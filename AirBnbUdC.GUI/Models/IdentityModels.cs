@@ -36,6 +36,7 @@ namespace AirBnbUdC.GUI.Models
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.CityModel> CityModels { get; set; }
 
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.PropertyOwnerModel> PropertyOwnerModels { get; set; }
+        public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.PropertyOwnerModel> CustomerModels { get; set; }
 
     }
 }

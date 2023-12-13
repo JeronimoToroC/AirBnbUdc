@@ -93,11 +93,13 @@
       <DependentUpon>DataModelCore.tt</DependentUpon>
     </Compile>
     <Compile Include="Implementation\Parameters\CityImplementationRepository.cs" />
+    <Compile Include="Implementation\Parameters\CustomerImplementationRepository.cs" />
     <Compile Include="Implementation\Parameters\PropertyOwnerImplementationRepository.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationRepository.cs" />
     <Compile Include="Mappers\BaseMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\CityMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperRepository.cs" />
+    <Compile Include="Mappers\Parameters\CustomerMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\PropertyOwnerMapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
