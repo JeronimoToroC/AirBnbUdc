@@ -196,18 +196,22 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Parameters\CitiesController.cs" />
     <Compile Include="Controllers\Parameters\CountryController.cs" />
+    <Compile Include="Controllers\Parameters\PropertyOwnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\MapperBaseGUI.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\CityMapperGUI.cs" />
+    <Compile Include="Mappers\Parameters\PropertyOwnerMapperGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Parameters\CityModel.cs" />
+    <Compile Include="Models\Parameters\PropertyOwnerModel.cs" />
     <Compile Include="Models\Parameters\CountryModel.cs" />
     <Compile Include="Models\ReportModels\CitiesByCountryReportModel.cs" />
+    <Compile Include="Models\ReportModels\PropertyOwnerReportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Datasets\CitiesByCountryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -267,18 +271,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -323,6 +315,11 @@
     <Content Include="Views\Cities\Details.cshtml" />
     <Content Include="Views\Cities\Edit.cshtml" />
     <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\PropertyOwner\Create.cshtml" />
+    <Content Include="Views\PropertyOwner\Delete.cshtml" />
+    <Content Include="Views\PropertyOwner\Details.cshtml" />
+    <Content Include="Views\PropertyOwner\Edit.cshtml" />
+    <Content Include="Views\PropertyOwner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -389,7 +386,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57303</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44340/</IISUrl>
+          <IISUrl>http://localhost:44340/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

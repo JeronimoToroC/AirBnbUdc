@@ -93,10 +93,12 @@
       <DependentUpon>DataModelCore.tt</DependentUpon>
     </Compile>
     <Compile Include="Implementation\Parameters\CityImplementationRepository.cs" />
+    <Compile Include="Implementation\Parameters\PropertyOwnerImplementationRepository.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationRepository.cs" />
     <Compile Include="Mappers\BaseMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\CityMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperRepository.cs" />
+    <Compile Include="Mappers\Parameters\PropertyOwnerMapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,7 +121,6 @@
       <Name>AirbnbUdc.Repository.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DataModel\DataModelCore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
