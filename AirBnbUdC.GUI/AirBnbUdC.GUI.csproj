@@ -233,6 +233,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MultimediaTypeDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Datasets\PropertyOwnerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropertyOwnerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -285,12 +290,6 @@
     <Content Include="Reports\Datasets\CitiesByCountryDataSet.xss">
       <DependentUpon>CitiesByCountryDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Reports\Datasets\CustomerDataSet.xsc">
       <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </Content>
@@ -313,6 +312,23 @@
     <Content Include="Reports\Datasets\MultimediaTypeDataSet.xss">
       <DependentUpon>MultimediaTypeDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\Datasets\PropertyOwnerDataSet.xsc">
+      <DependentUpon>PropertyOwnerDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\PropertyOwnerDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PropertyOwnerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\PropertyOwnerDataSet.xss">
+      <DependentUpon>PropertyOwnerDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -391,6 +407,11 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\MultimediaType\Create.cshtml" />
+    <Content Include="Views\MultimediaType\Delete.cshtml" />
+    <Content Include="Views\MultimediaType\Details.cshtml" />
+    <Content Include="Views\MultimediaType\Edit.cshtml" />
+    <Content Include="Views\MultimediaType\Index.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.esm.min.js.map" />
@@ -399,11 +420,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\MultimediaType\Create.cshtml" />
-    <Content Include="Views\MultimediaType\Delete.cshtml" />
-    <Content Include="Views\MultimediaType\Details.cshtml" />
-    <Content Include="Views\MultimediaType\Edit.cshtml" />
-    <Content Include="Views\MultimediaType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +442,7 @@
     <EmbeddedResource Include="Reports\RdlcFiles\CitiesByCountryReport.rdlc" />
     <EmbeddedResource Include="Reports\RdlcFiles\CustomerReport.rdlc" />
     <EmbeddedResource Include="Reports\RdlcFiles\MultimediaTypeReport.rdlc" />
+    <EmbeddedResource Include="Reports\RdlcFiles\PropertyOwnerReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
