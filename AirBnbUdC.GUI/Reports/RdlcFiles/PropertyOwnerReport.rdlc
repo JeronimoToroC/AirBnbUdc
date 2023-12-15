@@ -331,8 +331,7 @@
                                         <rd:DefaultName>FirstName</rd:DefaultName>
                                         <Style>
                                           <Border>
-                                            <Color>LightGrey</Color>
-                                            <Style>Solid</Style>
+                                            <Style>None</Style>
                                           </Border>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
@@ -520,10 +519,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.12912in</Height>
+    <Height>4.67912in</Height>
     <Style />
   </Body>
-  <Width>6.92573in</Width>
+  <Width>7.88406in</Width>
   <Page>
     <PageHeader>
       <Height>2.29057cm</Height>
@@ -586,7 +585,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.95486cm</Height>
+      <Height>5.95536cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

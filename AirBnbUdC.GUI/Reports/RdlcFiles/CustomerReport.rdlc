@@ -296,8 +296,7 @@
                                         <rd:DefaultName>FirstName</rd:DefaultName>
                                         <Style>
                                           <Border>
-                                            <Color>LightGrey</Color>
-                                            <Style>Solid</Style>
+                                            <Style>None</Style>
                                           </Border>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
@@ -474,7 +473,7 @@
           </SortExpression>
         </SortExpressions>
         <Top>1.93634cm</Top>
-        <Left>3.63714cm</Left>
+        <Left>2.49932cm</Left>
         <Height>3.14733cm</Height>
         <Width>14.32723cm</Width>
         <Style>
@@ -523,7 +522,7 @@
     <Height>2.55689in</Height>
     <Style />
   </Body>
-  <Width>7.25126in</Width>
+  <Width>7.90126in</Width>
   <Page>
     <PageHeader>
       <Height>1.9572cm</Height>
@@ -661,8 +660,8 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>21.59cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>
