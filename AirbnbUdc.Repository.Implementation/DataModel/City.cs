@@ -14,10 +14,18 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
     
     public partial class City
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public City()
+        {
+            this.Property = new HashSet<Property>();
+        }
+    
         public int Id { get; set; }
         public string CityName { get; set; }
         public int CountryId { get; set; }
     
         public virtual Country Country { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Property> Property { get; set; }
     }
 }

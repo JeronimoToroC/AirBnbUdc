@@ -36,6 +36,7 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
         public bool Freezer { get; set; }
         public bool LaundryService { get; set; }
     
+        public virtual City City { get; set; }
         public virtual PropertyOwner PropertyOwner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyMultimedia> PropertyMultimedia { get; set; }

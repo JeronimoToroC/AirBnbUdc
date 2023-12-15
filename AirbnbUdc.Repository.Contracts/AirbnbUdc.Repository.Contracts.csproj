@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Parameters\IMultimediaTypeRepository.cs" />
     <Compile Include="Contracts\Parameters\ICityRepository.cs" />
     <Compile Include="Contracts\Parameters\ICountryRepository.cs" />
     <Compile Include="Contracts\Parameters\ICustomerRepository.cs" />
     <Compile Include="Contracts\Parameters\IPropertyOwnerRepository.cs" />
+    <Compile Include="DbModel\Parameters\MultimediaTypeDbModel.cs" />
     <Compile Include="DbModel\Parameters\CityDbModel.cs" />
     <Compile Include="DbModel\Parameters\CountryDbModel.cs" />
     <Compile Include="DbModel\Parameters\PropertyOwnerDbModel.cs" />

@@ -20,6 +20,7 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
         public Nullable<int> RateForCustomer { get; set; }
         public string CommentsForCustomer { get; set; }
         public long ReservationId { get; set; }
+        public string Title { get; set; }
     
         public virtual Reservation Reservation { get; set; }
     }

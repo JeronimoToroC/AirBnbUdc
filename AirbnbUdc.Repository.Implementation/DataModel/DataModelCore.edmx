@@ -41,6 +41,7 @@
           <Property Name="RateForCustomer" Type="int" />
           <Property Name="CommentsForCustomer" Type="nvarchar(max)" />
           <Property Name="ReservationId" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MultimediaType">
           <Key>
@@ -100,7 +101,7 @@
           <Property Name="PropertyId" Type="bigint" Nullable="false" />
           <Property Name="CustomerId" Type="bigint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__City__CountryId__4BAC3F29">
+        <Association Name="FK__City__CountryId__398D8EEE">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Feedback__Reserv__5AEE82B9">
+        <Association Name="FK__Feedback__Reserv__48CFD27E">
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
           <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Property__OwnerI__5629CD9C">
+        <Association Name="FK__Property__OwnerI__440B1D61">
           <End Role="PropertyOwner" Type="Self.PropertyOwner" Multiplicity="1" />
           <End Role="Property" Type="Self.Property" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropertyM__Multi__60A75C0F">
+        <Association Name="FK__PropertyM__Multi__4E88ABD4">
           <End Role="MultimediaType" Type="Self.MultimediaType" Multiplicity="1" />
           <End Role="PropertyMultimedia" Type="Self.PropertyMultimedia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropertyM__Prope__5FB337D6">
+        <Association Name="FK__PropertyM__Prope__4D94879B">
           <End Role="Property" Type="Self.Property" Multiplicity="1" />
           <End Role="PropertyMultimedia" Type="Self.PropertyMultimedia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,6 +158,18 @@
             </Principal>
             <Dependent Role="PropertyMultimedia">
               <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cityId_property">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -194,25 +207,29 @@
           <EntitySet Name="PropertyMultimedia" EntityType="Self.PropertyMultimedia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropertyOwner" EntityType="Self.PropertyOwner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__City__CountryId__4BAC3F29" Association="Self.FK__City__CountryId__4BAC3F29">
+          <AssociationSet Name="FK__City__CountryId__398D8EEE" Association="Self.FK__City__CountryId__398D8EEE">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK__Feedback__Reserv__5AEE82B9" Association="Self.FK__Feedback__Reserv__5AEE82B9">
+          <AssociationSet Name="FK__Feedback__Reserv__48CFD27E" Association="Self.FK__Feedback__Reserv__48CFD27E">
             <End Role="Reservation" EntitySet="Reservation" />
             <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
-          <AssociationSet Name="FK__Property__OwnerI__5629CD9C" Association="Self.FK__Property__OwnerI__5629CD9C">
+          <AssociationSet Name="FK__Property__OwnerI__440B1D61" Association="Self.FK__Property__OwnerI__440B1D61">
             <End Role="PropertyOwner" EntitySet="PropertyOwner" />
             <End Role="Property" EntitySet="Property" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropertyM__Multi__60A75C0F" Association="Self.FK__PropertyM__Multi__60A75C0F">
+          <AssociationSet Name="FK__PropertyM__Multi__4E88ABD4" Association="Self.FK__PropertyM__Multi__4E88ABD4">
             <End Role="MultimediaType" EntitySet="MultimediaType" />
             <End Role="PropertyMultimedia" EntitySet="PropertyMultimedia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropertyM__Prope__5FB337D6" Association="Self.FK__PropertyM__Prope__5FB337D6">
+          <AssociationSet Name="FK__PropertyM__Prope__4D94879B" Association="Self.FK__PropertyM__Prope__4D94879B">
             <End Role="Property" EntitySet="Property" />
             <End Role="PropertyMultimedia" EntitySet="PropertyMultimedia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cityId_property" Association="Self.fk_cityId_property">
+            <End Role="City" EntitySet="City" />
+            <End Role="Property" EntitySet="Property" />
           </AssociationSet>
           <AssociationSet Name="fk_CustomerId_Reservation" Association="Self.fk_CustomerId_Reservation">
             <End Role="Customer" EntitySet="Customer" />
@@ -235,7 +252,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__City__CountryId__4BAC3F29" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__City__CountryId__398D8EEE" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Property" Relationship="Self.fk_cityId_property" FromRole="City" ToRole="Property" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -243,7 +261,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK__City__CountryId__4BAC3F29" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="City" Relationship="Self.FK__City__CountryId__398D8EEE" FromRole="Country" ToRole="City" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -267,7 +285,8 @@
           <Property Name="RateForCustomer" Type="Int32" />
           <Property Name="CommentsForCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReservationId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Reservation" Relationship="Self.FK__Feedback__Reserv__5AEE82B9" FromRole="Feedback" ToRole="Reservation" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK__Feedback__Reserv__48CFD27E" FromRole="Feedback" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="MultimediaType">
           <Key>
@@ -275,7 +294,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MultimediaTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="PropertyMultimedia" Relationship="Self.FK__PropertyM__Multi__60A75C0F" FromRole="MultimediaType" ToRole="PropertyMultimedia" />
+          <NavigationProperty Name="PropertyMultimedia" Relationship="Self.FK__PropertyM__Multi__4E88ABD4" FromRole="MultimediaType" ToRole="PropertyMultimedia" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
@@ -295,8 +314,9 @@
           <Property Name="Pets" Type="Boolean" Nullable="false" />
           <Property Name="Freezer" Type="Boolean" Nullable="false" />
           <Property Name="LaundryService" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="PropertyOwner" Relationship="Self.FK__Property__OwnerI__5629CD9C" FromRole="Property" ToRole="PropertyOwner" />
-          <NavigationProperty Name="PropertyMultimedia" Relationship="Self.FK__PropertyM__Prope__5FB337D6" FromRole="Property" ToRole="PropertyMultimedia" />
+          <NavigationProperty Name="City" Relationship="Self.fk_cityId_property" FromRole="Property" ToRole="City" />
+          <NavigationProperty Name="PropertyOwner" Relationship="Self.FK__Property__OwnerI__440B1D61" FromRole="Property" ToRole="PropertyOwner" />
+          <NavigationProperty Name="PropertyMultimedia" Relationship="Self.FK__PropertyM__Prope__4D94879B" FromRole="Property" ToRole="PropertyMultimedia" />
           <NavigationProperty Name="Reservation" Relationship="Self.fk_PropertyId_Reservation" FromRole="Property" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="PropertyMultimedia">
@@ -308,8 +328,8 @@
           <Property Name="MultimediaLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PropertyId" Type="Int64" Nullable="false" />
           <Property Name="MultimediaTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MultimediaType" Relationship="Self.FK__PropertyM__Multi__60A75C0F" FromRole="PropertyMultimedia" ToRole="MultimediaType" />
-          <NavigationProperty Name="Property" Relationship="Self.FK__PropertyM__Prope__5FB337D6" FromRole="PropertyMultimedia" ToRole="Property" />
+          <NavigationProperty Name="MultimediaType" Relationship="Self.FK__PropertyM__Multi__4E88ABD4" FromRole="PropertyMultimedia" ToRole="MultimediaType" />
+          <NavigationProperty Name="Property" Relationship="Self.FK__PropertyM__Prope__4D94879B" FromRole="PropertyMultimedia" ToRole="Property" />
         </EntityType>
         <EntityType Name="PropertyOwner">
           <Key>
@@ -321,7 +341,7 @@
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cellphone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Property" Relationship="Self.FK__Property__OwnerI__5629CD9C" FromRole="PropertyOwner" ToRole="Property" />
+          <NavigationProperty Name="Property" Relationship="Self.FK__Property__OwnerI__440B1D61" FromRole="PropertyOwner" ToRole="Property" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -334,10 +354,10 @@
           <Property Name="PropertyId" Type="Int64" Nullable="false" />
           <Property Name="CustomerId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.fk_CustomerId_Reservation" FromRole="Reservation" ToRole="Customer" />
-          <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__Reserv__5AEE82B9" FromRole="Reservation" ToRole="Feedback" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__Reserv__48CFD27E" FromRole="Reservation" ToRole="Feedback" />
           <NavigationProperty Name="Property" Relationship="Self.fk_PropertyId_Reservation" FromRole="Reservation" ToRole="Property" />
         </EntityType>
-        <Association Name="FK__City__CountryId__4BAC3F29">
+        <Association Name="FK__City__CountryId__398D8EEE">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
           <ReferentialConstraint>
@@ -346,6 +366,18 @@
             </Principal>
             <Dependent Role="City">
               <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cityId_property">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -361,7 +393,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Feedback__Reserv__5AEE82B9">
+        <Association Name="FK__Feedback__Reserv__48CFD27E">
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
           <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
           <ReferentialConstraint>
@@ -373,7 +405,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropertyM__Multi__60A75C0F">
+        <Association Name="FK__PropertyM__Multi__4E88ABD4">
           <End Role="MultimediaType" Type="Self.MultimediaType" Multiplicity="1" />
           <End Role="PropertyMultimedia" Type="Self.PropertyMultimedia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,7 +417,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Property__OwnerI__5629CD9C">
+        <Association Name="FK__Property__OwnerI__440B1D61">
           <End Role="PropertyOwner" Type="Self.PropertyOwner" Multiplicity="1" />
           <End Role="Property" Type="Self.Property" Multiplicity="*" />
           <ReferentialConstraint>
@@ -397,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropertyM__Prope__5FB337D6">
+        <Association Name="FK__PropertyM__Prope__4D94879B">
           <End Role="Property" Type="Self.Property" Multiplicity="1" />
           <End Role="PropertyMultimedia" Type="Self.PropertyMultimedia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -431,27 +463,31 @@
           <EntitySet Name="PropertyMultimedia" EntityType="Self.PropertyMultimedia" />
           <EntitySet Name="PropertyOwner" EntityType="Self.PropertyOwner" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" />
-          <AssociationSet Name="FK__City__CountryId__4BAC3F29" Association="Self.FK__City__CountryId__4BAC3F29">
+          <AssociationSet Name="FK__City__CountryId__398D8EEE" Association="Self.FK__City__CountryId__398D8EEE">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cityId_property" Association="Self.fk_cityId_property">
+            <End Role="City" EntitySet="City" />
+            <End Role="Property" EntitySet="Property" />
           </AssociationSet>
           <AssociationSet Name="fk_CustomerId_Reservation" Association="Self.fk_CustomerId_Reservation">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
-          <AssociationSet Name="FK__Feedback__Reserv__5AEE82B9" Association="Self.FK__Feedback__Reserv__5AEE82B9">
+          <AssociationSet Name="FK__Feedback__Reserv__48CFD27E" Association="Self.FK__Feedback__Reserv__48CFD27E">
             <End Role="Reservation" EntitySet="Reservation" />
             <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropertyM__Multi__60A75C0F" Association="Self.FK__PropertyM__Multi__60A75C0F">
+          <AssociationSet Name="FK__PropertyM__Multi__4E88ABD4" Association="Self.FK__PropertyM__Multi__4E88ABD4">
             <End Role="MultimediaType" EntitySet="MultimediaType" />
             <End Role="PropertyMultimedia" EntitySet="PropertyMultimedia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Property__OwnerI__5629CD9C" Association="Self.FK__Property__OwnerI__5629CD9C">
+          <AssociationSet Name="FK__Property__OwnerI__440B1D61" Association="Self.FK__Property__OwnerI__440B1D61">
             <End Role="PropertyOwner" EntitySet="PropertyOwner" />
             <End Role="Property" EntitySet="Property" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropertyM__Prope__5FB337D6" Association="Self.FK__PropertyM__Prope__5FB337D6">
+          <AssociationSet Name="FK__PropertyM__Prope__4D94879B" Association="Self.FK__PropertyM__Prope__4D94879B">
             <End Role="Property" EntitySet="Property" />
             <End Role="PropertyMultimedia" EntitySet="PropertyMultimedia" />
           </AssociationSet>
@@ -504,6 +540,7 @@
                 <ScalarProperty Name="RateForCustomer" ColumnName="RateForCustomer" />
                 <ScalarProperty Name="CommentsForCustomer" ColumnName="CommentsForCustomer" />
                 <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
